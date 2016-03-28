@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/src/AppBundle/Controller/DefaultController.php</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/vendor/symfony/symfony/src/Symfony/Component/Form/Form.php</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/app/Resources/views/home.html.twig</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/src/AppBundle/Entity/Model.php</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/src/AppBundle/Entity/Item.php</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/src/AppBundle/Controller/ItemController.php</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/app/Resources/views/item/new.html.twig</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/src/AppBundle/Form/ItemType.php</file>
+        </group>
+    </open-files>
+</project-private>
