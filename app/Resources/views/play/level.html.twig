@@ -4,7 +4,6 @@
 {% block body %}
     <div id="container">
         <div id="screen">
-            <img id="model" src="{{asset(model.picture)}}" alt="{{model.name}}"/>
             <div id="modelItems">
                 <ul id="itemContainer">
                     {% for item in items %}
@@ -16,9 +15,6 @@
                     {% endfor %}   
                 </ul>
             </div>
-            <div id="timerContainer">
-                <h1 id="timer">5</h1>
-            </div>
         </div>
         <div id="controlePanel">
             <button id='button1-hide'>Hide</button>
@@ -28,6 +24,10 @@
             <h2>Total Items: {{model.totalItems}}</h2>
             <h2>Good Picks: <span id="goodPicks"></span></h2>
             <h2>Bad Picks: <span id="badPicks"></span></h2>
+        </div>
+        <div id="modelPanel">
+            <img id="model" src="{{asset(model.picture)}}" alt="{{model.name}}"/>
+            <h1 id="timer">10</h1>
         </div>
     </div>
     
@@ -44,10 +44,10 @@
         $(function(){
             //testing buttons
             $("#hide").click(function(){
-                $("#model").hide();
+                $("#modelPanel").hide();
             });
             $("#show").click(function(){
-                $("#model").show();
+                $("#modelPanel").show();
             });
             
             $("#button1-hide").click(function(){
@@ -117,6 +117,9 @@
             //evaluate picks
             
             //countdown timer
+            $('#timer').load(function(){
+                
+            });
             
         });        
     </script>
@@ -217,12 +220,30 @@
         position: absolute
     }
     
+    #modelPanel {
+        position: absolute;
+        height: 100%;
+        width: 80%;
+        //background: pink;
+        left: 10%;
+        top: 0px;
+    }
+    
     #model {
+        position: absolute;
         display: block; 
-        margin-left:auto; 
-        margin-right:auto; 
-        height: 600px; 
+        left: 10%;
+        top: 2.5%;
+        height: 95%; 
         width: auto
+    }
+    
+    #timer {
+        position: absolute;
+        display: block;
+        top: 18%;
+        right: 10%;
+        font-size: 15em;
     }
     
     #modelItems {

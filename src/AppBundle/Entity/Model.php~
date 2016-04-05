@@ -171,4 +171,9 @@ class Model
     {
         return $this->items;
     }
+    
+    public function __toString() 
+    {
+        return $this->name;
+    }
 }
