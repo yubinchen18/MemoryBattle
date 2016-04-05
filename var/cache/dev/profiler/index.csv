@@ -1018,3 +1018,9 @@ a63258,::1,GET,http://localhost:8888/MemoryBattle/web/level/1,1459157708,,200
 854823,::1,GET,http://localhost:8888/MemoryBattle/web/level/1,1459163302,,200
 b67516,127.0.0.1,GET,http://localhost:8888/MemoryBattle/web/,1459896183,dbc4c8,200
 dbc4c8,127.0.0.1,GET,http://localhost:8888/MemoryBattle/web/,1459896183,,500
+0df7c0,127.0.0.1,GET,http://localhost:8888/MemoryBattle/web/scandir/images/items/,1459897241,,200
+e84f64,127.0.0.1,GET,http://localhost:8888/MemoryBattle/web/scandir/images/models,1459897261,,200
+bea876,127.0.0.1,GET,http://localhost:8888/MemoryBattle/web/scandir/images/items,1459897387,,200
+5b2274,127.0.0.1,GET,http://localhost:8888/MemoryBattle/web/scandir/images/items,1459897394,,200
+856763,127.0.0.1,GET,http://localhost:8888/MemoryBattle/web/item/1,1459897404,,200
+09fb7f,127.0.0.1,GET,http://localhost:8888/MemoryBattle/web/item/,1459897411,,200
