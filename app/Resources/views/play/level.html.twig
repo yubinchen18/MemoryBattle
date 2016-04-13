@@ -40,7 +40,22 @@
     <script>
         var goodPicks = [];
         var badPicks = [];
-
+        
+        function timerLoop (i) {
+            setTimeout(function () {
+                var num = Number($('#timer').text());
+                var label = String(num-i);
+                $('#timer').fadeOut(500);
+                setTimeout(function(){
+                    $('#timer').text(i).fadeIn(500);
+                }, 500);
+                console.log(label);
+                if (--i) {          // If i > 0, keep going
+                    timerLoop(i);       // Call the loop again, and pass it the current value of i
+                }
+            }, 1000);
+        };
+        
         $(function(){
             //testing buttons
             $("#hide").click(function(){
@@ -117,9 +132,7 @@
             //evaluate picks
             
             //countdown timer
-            setTimeout(function(){
-                setInterval($('#timer').fadeOut('slow'));
-            }, 3000);
+            timerLoop(Number($('#timer').text()));
         });        
     </script>
     
