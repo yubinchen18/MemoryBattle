@@ -91,16 +91,16 @@ body {
         position: absolute;
         display: none;
         height: 100%;
-        width: 80%;
+        width: 100%;
         //background: pink;
-        left: 10%;
+        left: 0px;
         top: 0px;
     }
     
     #model {
         position: absolute;
         display: block; 
-        left: 10%;
+        left: 20%;
         top: 2.5%;
         height: 95%; 
         width: auto
@@ -109,9 +109,9 @@ body {
     #timer {
         position: absolute;
         display: block;
-        top: 18%;
-        right: 19%;
-        font-size: 15em;
+        top: 50%;
+        right: 29%;
+        font-size: 20vw;
     }
     
     #modelItems {
