@@ -7,15 +7,27 @@ var badPicks = [];
 //Timer Countdown
 function timerLoop (i) {
     setTimeout(function () {
-        var num = Number($('#timer').text());
-        var label = String(num-i);
+        //var num = Number($('#timer').text());
+        //var label = String(num-i);
         $('#timer').fadeOut(500);
         setTimeout(function(){
             $('#timer').text(i).fadeIn(500);
         }, 500);
-        console.log(label);
+        //console.log(label);
         if (--i) {          // If i > 0, keep going
             timerLoop(i);       // Call the loop again, and pass it the current value of i
+        } else {
+            setTimeout(function(){
+                $('#modelPanel').animate({
+                height: '150%',
+                width: '150%',
+                left: '-25%',
+                top: '-25%',
+                opacity: '0'
+                }, 500, 'easeInQuart', function(){
+                    $(this).hide();
+                }); 
+            },1000);        
         }
     }, 1000);
 };
@@ -110,20 +122,13 @@ $(function(){
         animate({
             right: '29%'
         }, 1000, 'easeOutQuart');
-
-    //modelPannel Disappear
-    $('#modelPanel').animate({
-        height: '200%',
-        width: '200%',
-        left: '-50%',
-        top: '-50%',
-        opacity: '0',
-    }, 500, 'easeInQuart');
-
+        
     //countdown timer
     setTimeout(function(){
         timerLoop(Number($('#timer').text()));
-    }, 1500)
+    }, 1500);
+    
+        
 
 });        
 
