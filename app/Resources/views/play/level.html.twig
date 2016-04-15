@@ -41,6 +41,9 @@
         var goodPicks = [];
         var badPicks = [];
         
+        //Interface functions
+        
+        
         //Timer Countdown
         function timerLoop (i) {
             setTimeout(function () {
@@ -132,8 +135,18 @@
             
             //evaluate picks
             
+            //
+            $('#modelPanel').fadeIn(1000);
+            $('#model').css('left', '-600px').
+                    animate({
+                    left: '10%'
+                }, 1500, 'swing');
+            
             //countdown timer
-            timerLoop(Number($('#timer').text()));
+            setTimeout(function(){
+                timerLoop(Number($('#timer').text()));
+            }, 1500)
+                
         });        
     </script>
     

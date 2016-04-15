@@ -89,6 +89,7 @@ body {
     
     #modelPanel {
         position: absolute;
+        display: none;
         height: 100%;
         width: 80%;
         //background: pink;
@@ -109,12 +110,12 @@ body {
         position: absolute;
         display: block;
         top: 18%;
-        right: 10%;
+        right: 19%;
         font-size: 15em;
     }
     
     #modelItems {
-        display: block;
+        display: none;
         top: 0px; 
         height: 100%; 
         width: 100%; 
