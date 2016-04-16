@@ -4,34 +4,73 @@ var badPicks = [];
 //Interface functions
 
 
-//Timer Countdown
+//Timer Countdown then hide screen panel
 function timerLoop (i) {
     setTimeout(function () {
-        //var num = Number($('#timer').text());
-        //var label = String(num-i);
-        $('#timer').fadeOut(500);
+        var timer = $('#timer');
+        timer.fadeOut(500);
         setTimeout(function(){
-            $('#timer').text(i).fadeIn(500);
+            timer.text(i).fadeIn(500);
         }, 500);
         //console.log(label);
         if (--i) {          // If i > 0, keep going
             timerLoop(i);       // Call the loop again, and pass it the current value of i
         } else {
             setTimeout(function(){
-                $('#modelPanel').animate({
-                height: '150%',
-                width: '150%',
-                left: '-25%',
-                top: '-25%',
-                opacity: '0'
+                //hide model
+                var model = $('#model');
+                var modelPanel = $('#modelPanel');
+                var modelItems = $('#modelItems');
+                var thumbnailContainer = $('.thumbnailContainer');
+                //var modelStyle = model.css('width');
+                //console.log (modelStyle);
+                model.animate({
+                    height: '150%',
+                    left: '0',
+                    top: '-25%',
+                    opacity: '0'
                 }, 500, 'easeInQuart', function(){
-                    $(this).hide();
-                }); 
+                    $(this).css({
+                        'left': '20%',
+                        'top': '2.5%',
+                        'height': '95%',
+                        'opacity': '100'
+                    });
+                });
+                //hide timer
+                timer.animate({
+                    height: '80%',
+                    right: '0',
+                    top: '10%',
+                    fontSize: '80vh',
+                    opacity: '0'
+                }, 500, 'easeInQuart', function(){
+                    $(this).css({
+                        'top': '30%',
+                        'right': '29%',
+                        'height': '40%',
+                        'font-size': '40vh',
+                        'opacity': '100'
+                    });
+                });
+                
+                //hide modelPannel, modelItems appear
+                setTimeout(function(){
+                    modelPanel.hide();                       
+                    modelItems.fadeIn(500);
+                    thumbnailContainer.css({
+                        height: '80%',
+                        width: '192px'
+                    }).animate({
+                        height: '100%',
+                        width: '240px'
+                    },500);
+                }, 500);
+                
             },1000);        
         }
     }, 1000);
 };
-
 
 
 // Functions after document ready
@@ -109,8 +148,9 @@ $(function(){
     });
 
     //evaluate picks
-
-    //modelPanel Appear
+    
+    //Start animation sequence
+    //modelPanel appear
     $('#modelPanel').fadeIn(1400);
     //model appear
     $('#model').css('left', '-800px').
@@ -123,10 +163,12 @@ $(function(){
             right: '29%'
         }, 1000, 'easeOutQuart');
         
-    //countdown timer
+    //countdown timer, modelPanel disappear, modelItems appear
     setTimeout(function(){
         timerLoop(Number($('#timer').text()));
-    }, 1500);
+    }, 1000);
+    
+    
     
         
 

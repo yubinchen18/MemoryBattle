@@ -91,10 +91,11 @@ body {
         position: absolute;
         display: none;
         height: 100%;
-        width: 100%;
+        width: 80%;
         //background: pink;
-        left: 0px;
+        left: 10%;
         top: 0px;
+        overflow: hidden;
     }
     
     #model {
@@ -109,10 +110,12 @@ body {
     #timer {
         position: absolute;
         display: block;
-        top: auto;
-        bottom: auto;
+        top: 30%;
         right: 29%;
-        font-size: 20vw;
+        height: 40%;
+        font-size: 40vh;
+        font-family: "adobe-caslon-pro", serif;
+        //background: red;
     }
     
     #modelItems {
@@ -122,7 +125,7 @@ body {
         width: 100%; 
         overflow: hidden; 
         position: absolute; 
-        //background:pink
+        //background: yellow
     }
     
     #itemContainer li {
@@ -175,7 +178,7 @@ body {
         width: 100%; 
         left: 0px; 
         bottom: 0px; 
-        display: block; 
+        display: none; 
         background-color: purple; 
         overflow: hidden;
         position: absolute
