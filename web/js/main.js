@@ -40,7 +40,7 @@ function timerLoop (i) {
                 //hide timer
                 timer.animate({
                     height: '80%',
-                    right: '0',
+                    right: '0%',
                     top: '10%',
                     fontSize: '80vh',
                     opacity: '0'
