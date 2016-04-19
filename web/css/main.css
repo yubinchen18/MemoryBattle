@@ -173,6 +173,23 @@ body {
         cursor: pointer
     }
     
+    #screenTimer {
+        height: 60%;
+        width: 100px;
+        left: 80%;
+        top: 50px;
+        position: absolute;
+        display: none;
+        //background: yellow;
+    }
+    
+    .timerBars {
+        margin-top: 2%;
+        height: 10%;
+        width: 100%;
+        background: black;
+    }
+    
     #controlePanel {
         height: 20%; 
         width: 100%; 
@@ -185,7 +202,10 @@ body {
     }
     
     .selected {
-        border: 3px solid black;
+        //border: 3px solid black;
+        height: 115%;
+        width: 276px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     
     

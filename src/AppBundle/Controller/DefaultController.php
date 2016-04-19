@@ -50,9 +50,12 @@ class DefaultController extends Controller
                 ->findByModel($id);
         shuffle($items);
         
+        $screenTimer = 10;
+        
         return $this->render('play/level.html.twig', array(
             'items' => $items,
             'model' => $model,
+            'screenTimer' => $screenTimer
         ));
     }
     

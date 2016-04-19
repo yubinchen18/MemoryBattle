@@ -22,6 +22,7 @@ function timerLoop (i) {
                 var modelPanel = $('#modelPanel');
                 var modelItems = $('#modelItems');
                 var thumbnailContainer = $('.thumbnailContainer');
+                var screenTimer = $('#screenTimer');
                 //var modelStyle = model.css('width');
                 //console.log (modelStyle);
                 model.animate({
@@ -58,6 +59,7 @@ function timerLoop (i) {
                 setTimeout(function(){
                     modelPanel.hide();                       
                     modelItems.fadeIn(500);
+                    screenTimer.fadeIn(500);
                     thumbnailContainer.css({
                         height: '80%',
                         width: '192px'
@@ -65,6 +67,7 @@ function timerLoop (i) {
                         height: '100%',
                         width: '240px'
                     },500);
+                    screenTimerCountdown (10);
                 }, 500);
                 
             },1000);        
@@ -72,10 +75,34 @@ function timerLoop (i) {
     }, 1000);
 };
 
+function screenTimerCountdown (seconds) 
+{
+    var second = 0;
+    frame();
+    var timerBar = setInterval(frame, 1000);
+    function frame()
+    {
+        var elId = String('#timerBar'+second);
+        if (second == (seconds))
+        {
+            clearInterval(timerBar);
+        } else {
+            $(elId).animate({
+                opacity: '0'
+            }, 800);
+            second++;   
+        };
+    };
+}
+
 
 // Functions after document ready
 $(function(){
     //testing buttons
+    $("#timerBar0").click(function(){
+        screenTimerCountdown (10);
+    });
+    
     $("#hide").click(function(){
         $("#modelPanel").hide();
     });
@@ -95,6 +122,7 @@ $(function(){
         $(this).animate({
             height: '115%',
             width: '276px',
+            //boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
             //borderStyle: 'dashed',
             //borderColor: '#99ff00',
             //borderWidth: '5px',
@@ -168,7 +196,9 @@ $(function(){
         timerLoop(Number($('#timer').text()));
     }, 1000);
     
-    
+    //screenTimer animation
+    /*
+    for*/ 
     
         
 

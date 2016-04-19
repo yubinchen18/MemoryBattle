@@ -3,6 +3,7 @@
 
 {% block body %}
     <div id="container">
+        
         <div id="screen">
             <div id="modelItems">
                 <ul id="itemContainer">
@@ -15,7 +16,13 @@
                     {% endfor %}   
                 </ul>
             </div>
+            <div id ="screenTimer">
+                {% for i in 0..(screenTimer-1) %}
+                    <div class="timerBars" id="timerBar{{i}}"></div>
+                {% endfor %}
+            </div>
         </div>
+                
         <div id="controlePanel">
             <button id='button1-hide'>Hide</button>
             <button id="hide">Hide</button>
@@ -25,9 +32,12 @@
             <h2>Good Picks: <span id="goodPicks"></span></h2>
             <h2>Bad Picks: <span id="badPicks"></span></h2>
         </div>
+            
+        
+        
         <div id="modelPanel">
             <img id="model" src="{{asset(model.picture)}}" alt="{{model.name}}"/>
-            <h1 id="timer">5</h1>
+            <h1 id="timer">2</h1>
         </div>
     </div>
     
@@ -39,6 +49,7 @@
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/jquery.easing.1.3.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{asset('js/jquery.animate-shadow-min.js')}}"></script>
     
     
     
