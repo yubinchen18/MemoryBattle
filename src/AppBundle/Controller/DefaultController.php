@@ -33,7 +33,7 @@ class DefaultController extends Controller
     /**
      * @Route("level/{id}", name="level")
      */
-    public function playAction($id)
+    public function playAction($id, Request $request)
     {
         $model = $this->getDoctrine()
                 ->getRepository('AppBundle:Model')
@@ -51,11 +51,18 @@ class DefaultController extends Controller
         shuffle($items);
         
         $screenTimer = 10;
+        $nextLevel = $id+1;
+        //$nextLevelUrl = $request->getUri();
+        //echo($nextLevelUrl);
+        var_dump($_POST);
+        echo '<br>';
+        var_dump($_GET);
         
         return $this->render('play/level.html.twig', array(
             'items' => $items,
             'model' => $model,
-            'screenTimer' => $screenTimer
+            'screenTimer' => $screenTimer,
+            'nextLevel' => $nextLevel
         ));
     }
     

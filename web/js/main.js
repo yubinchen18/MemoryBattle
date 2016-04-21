@@ -67,7 +67,9 @@ function timerLoop (i) {
                         height: '100%',
                         width: '240px'
                     },500);
-                    screenTimerCountdown (10);
+                    setTimeout(function(){
+                        screenTimerCountdown (10);
+                    }, 1000);
                 }, 500);
                 
             },1000);        
@@ -86,8 +88,17 @@ function screenTimerCountdown (seconds)
         if (second == (seconds))
         {
             clearInterval(timerBar);
+            //redirect to next level
+            console.dir(goodPicks);
+            console.dir(badPicks);
+            var stringify = JSON.stringify(badPicks);
+            console.log(stringify);
+            //$.submit(nextLevelUrl, {'picks[]':[goodPicks, badPicks]});
+            //window.location.replace(nextLevelUrl);
+            
         } else {
             $(elId).animate({
+                background: 'red',
                 opacity: '0'
             }, 800);
             second++;   
@@ -122,7 +133,7 @@ $(function(){
         $(this).animate({
             height: '115%',
             width: '276px',
-            //boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+            boxShadow: '5px 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
             //borderStyle: 'dashed',
             //borderColor: '#99ff00',
             //borderWidth: '5px',
@@ -130,13 +141,17 @@ $(function(){
     });
 
     $(".thumbnailContainer").mouseleave(function(){
-        $(this).animate({
-            height: '100%',
-            width: '240px',
-            //borderStyle: 'solid',
-            //borderColor: '#99ff00',
-            //borderWidth: '0px',
-        });
+        if (!$(this).hasClass('selected'))
+        {
+            $(this).animate({
+                height: '100%',
+                width: '240px',
+                boxShadow: '0px 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)'
+                //borderStyle: 'solid',
+                //borderColor: '#99ff00',
+                //borderWidth: '0px',
+            });
+        }
     });
 
     //Select items and register picks
@@ -146,14 +161,34 @@ $(function(){
         var currentId = $(this).attr('id');
         var goodText = '';
         var badText = '';
-
+        
+        // on selection insert to arrays
         if ($(this).hasClass('selected')) {
+            $(this).animate({
+                height: '115%',
+                width: '276px',
+                boxShadow: '5px 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+                //borderStyle: 'dashed',
+                //borderColor: '#99ff00',
+                //borderWidth: '5px',
+            });
+            
             if (pattern.test(currentId)) {
                 badPicks.push(currentId);
             } else {
                 goodPicks.push(currentId);
-            };                 
+            };
+        // on deselection remove from arrays
         } else {
+            $(this).animate({
+                height: '100%',
+                width: '240px',
+                boxShadow: '0px 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)'
+                //borderStyle: 'solid',
+                //borderColor: '#99ff00',
+                //borderWidth: '0px',
+            });
+            
             if (pattern.test(currentId)) {
                 badPicks.pop(currentId);
             } else {
@@ -200,8 +235,37 @@ $(function(){
     /*
     for*/ 
     
-        
+    //show viewport
+    var viewport = setInterval(getViewport, 1000);
+    
 
 });        
 
+//Get viewport
+function getViewport() {
 
+ var viewPortWidth;
+ var viewPortHeight;
+
+ // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+ if (typeof window.innerWidth != 'undefined') {
+   viewPortWidth = window.innerWidth,
+   viewPortHeight = window.innerHeight
+ }
+
+// IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+ else if (typeof document.documentElement != 'undefined'
+ && typeof document.documentElement.clientWidth !=
+ 'undefined' && document.documentElement.clientWidth != 0) {
+    viewPortWidth = document.documentElement.clientWidth,
+    viewPortHeight = document.documentElement.clientHeight
+ }
+
+ // older versions of IE
+ else {
+   viewPortWidth = document.getElementsByTagName('body')[0].clientWidth,
+   viewPortHeight = document.getElementsByTagName('body')[0].clientHeight
+ }
+ //return [viewPortWidth, viewPortHeight];
+ $('#viewport').text('h: '+ viewPortHeight + ', w: ' + viewPortWidth);
+}
