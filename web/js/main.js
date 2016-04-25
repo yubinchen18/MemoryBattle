@@ -77,6 +77,18 @@ function timerLoop (i) {
     }, 1000);
 };
 
+
+//Post goodPicks badPicks
+function postPicks()
+{
+    var goodPicksObj = {items: goodPicks, count: goodPicks.length};
+    var badPicksObj = {items: badPicks, count: badPicks.length};    
+    $('#goodPicks').attr('value', JSON.stringify(goodPicksObj));
+    $('#badPicks').attr('value', JSON.stringify(badPicksObj));
+    $('#picks').submit();
+}
+
+//Screen Timer Countdown script, post picks automatically after time expires
 function screenTimerCountdown (seconds) 
 {
     var second = 0;
@@ -89,13 +101,8 @@ function screenTimerCountdown (seconds)
         {
             clearInterval(timerBar);
             //redirect to next level
-            console.dir(goodPicks);
-            console.dir(badPicks);
-            var stringify = JSON.stringify(badPicks);
-            console.log(stringify);
-            //$.submit(nextLevelUrl, {'picks[]':[goodPicks, badPicks]});
-            //window.location.replace(nextLevelUrl);
             
+            //postPicks();
         } else {
             $(elId).animate({
                 background: 'red',
@@ -106,8 +113,36 @@ function screenTimerCountdown (seconds)
     };
 }
 
+//Get viewport
+function getViewport() {
+    var viewPortWidth;
+    var viewPortHeight;
 
-// Functions after document ready
+    // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+    if (typeof window.innerWidth != 'undefined') {
+      viewPortWidth = window.innerWidth,
+      viewPortHeight = window.innerHeight
+    }
+
+   // IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+    else if (typeof document.documentElement != 'undefined'
+    && typeof document.documentElement.clientWidth !=
+    'undefined' && document.documentElement.clientWidth != 0) {
+       viewPortWidth = document.documentElement.clientWidth,
+       viewPortHeight = document.documentElement.clientHeight
+    }
+
+    // older versions of IE
+    else {
+      viewPortWidth = document.getElementsByTagName('body')[0].clientWidth,
+      viewPortHeight = document.getElementsByTagName('body')[0].clientHeight
+    }
+    //return [viewPortWidth, viewPortHeight];
+    $('#viewport').text('h: '+ viewPortHeight + ', w: ' + viewPortWidth);
+}
+
+
+// Functions after document ready, load sequence
 $(function(){
     //testing buttons
     $("#timerBar0").click(function(){
@@ -126,6 +161,13 @@ $(function(){
         $(this).text(function(i,text){
             return text === "Hide" ? "Show" : "Hide";
         });
+    });
+    
+    
+    //Submit button
+    
+    $("#go").click(function(){
+        postPicks();
     });
 
     //Highlight items
@@ -203,11 +245,12 @@ $(function(){
             badText += badPicks[item] + ', ';
         };
 
-        $('#goodPicks').text(goodText);
-        $('#badPicks').text(badText);
+        //Showing picks for testing
+        $('#gPicks').text(goodText);
+        $('#bPicks').text(badText);
 
-        console.log(goodPicks);
-        console.log(badPicks);
+        //console.log(goodPicks);
+        //console.log(badPicks);
     });
 
     //evaluate picks
@@ -231,9 +274,6 @@ $(function(){
         timerLoop(Number($('#timer').text()));
     }, 1000);
     
-    //screenTimer animation
-    /*
-    for*/ 
     
     //show viewport
     var viewport = setInterval(getViewport, 1000);
@@ -241,31 +281,4 @@ $(function(){
 
 });        
 
-//Get viewport
-function getViewport() {
 
- var viewPortWidth;
- var viewPortHeight;
-
- // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
- if (typeof window.innerWidth != 'undefined') {
-   viewPortWidth = window.innerWidth,
-   viewPortHeight = window.innerHeight
- }
-
-// IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
- else if (typeof document.documentElement != 'undefined'
- && typeof document.documentElement.clientWidth !=
- 'undefined' && document.documentElement.clientWidth != 0) {
-    viewPortWidth = document.documentElement.clientWidth,
-    viewPortHeight = document.documentElement.clientHeight
- }
-
- // older versions of IE
- else {
-   viewPortWidth = document.getElementsByTagName('body')[0].clientWidth,
-   viewPortHeight = document.getElementsByTagName('body')[0].clientHeight
- }
- //return [viewPortWidth, viewPortHeight];
- $('#viewport').text('h: '+ viewPortHeight + ', w: ' + viewPortWidth);
-}

@@ -20,8 +20,10 @@
                 {% for i in 0..(screenTimer-1) %}
                     <div class="timerBars" id="timerBar{{i}}"></div>
                 {% endfor %}
-                <p id ="viewport">asdf</p>
+                <p id="viewport">asdf</p>
                 <a href ="{{ path('level', {'id': nextLevel}) }}">go</a>
+                <button id='go'>go</button>
+                <p id='score'>Current score is: {{score}}</p>
             </div>
         </div>
                 
@@ -31,8 +33,8 @@
             <button id="show">Show</button>
             
             <h2>Total Items: {{model.totalItems}}</h2>
-            <h2>Good Picks: <span id="goodPicks"></span></h2>
-            <h2>Bad Picks: <span id="badPicks"></span></h2>
+            <h2>Good Picks: <span id="gPicks"></span></h2>
+            <h2>Bad Picks: <span id="bPicks"></span></h2>
         </div>
             
         
@@ -43,7 +45,9 @@
         </div>
     </div>
     
-    <form id="submit">
+    <form id="picks" action="{{path('level', {'id': nextLevel})}}" method="post" >
+        <input id="goodPicks" type="hidden" name="goodPicks" value="">
+        <input id="badPicks" type="hidden" name="badPicks" value="">
     </form>
     
     

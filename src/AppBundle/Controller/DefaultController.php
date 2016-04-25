@@ -5,10 +5,10 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\Product;
+use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Model;
 use AppBundle\Entity\Item;
-use Symfony\Component\HttpFoundation\Response;
+
 
 class DefaultController extends Controller
 {
@@ -34,7 +34,8 @@ class DefaultController extends Controller
      * @Route("level/{id}", name="level")
      */
     public function playAction($id, Request $request)
-    {
+    {        
+        //Get models from DB
         $model = $this->getDoctrine()
                 ->getRepository('AppBundle:Model')
                 ->find($id);
@@ -45,24 +46,41 @@ class DefaultController extends Controller
             );
         }
         
+        //Get items from DB
         $items = $this->getDoctrine()
                 ->getRepository('AppBundle:Item')
                 ->findByModel($id);
         shuffle($items);
         
+        //Get request parameters
+        $goodPicks = json_decode($request->request->get('goodPicks'));
+        $badPicks = json_decode($request->request->get('badPicks'));
+        $session = $request->getSession();
+        
+        //ini session bag, at level 1 set score to 0
+        if($id==1)
+        {
+            $session->set('score', 0);
+        } else {
+            if ($request->request->has('goodPicks') && $request->request->has('badPicks'))
+            {
+                $newScore = $session->get('score') + ($goodPicks->count - $badPicks->count);
+                $session->set('score', $newScore);
+            }
+            
+        }
+       
+        //Level specific data such as timer
         $screenTimer = 10;
         $nextLevel = $id+1;
-        //$nextLevelUrl = $request->getUri();
-        //echo($nextLevelUrl);
-        var_dump($_POST);
-        echo '<br>';
-        var_dump($_GET);
+        $score = $session->get('score');
         
         return $this->render('play/level.html.twig', array(
             'items' => $items,
             'model' => $model,
             'screenTimer' => $screenTimer,
-            'nextLevel' => $nextLevel
+            'nextLevel' => $nextLevel,
+            'score' => $score
         ));
     }
     
