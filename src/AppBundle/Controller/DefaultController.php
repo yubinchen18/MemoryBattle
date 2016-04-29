@@ -62,6 +62,16 @@ class DefaultController extends Controller
         {
             $session->set('score', 0);
         } else {
+            
+            /* *
+             * Score system
+             * each good pick + 1
+             * each bad pick - 1
+             * if only good picks get bonus double score
+             * if only good picks and press submit bonus 
+             */
+            
+            
             if ($request->request->has('goodPicks') && $request->request->has('badPicks'))
             {
                 $newScore = $session->get('score') + ($goodPicks->count - $badPicks->count);
@@ -69,7 +79,7 @@ class DefaultController extends Controller
             }
             
         }
-       
+        
         //Level specific data such as timer
         $screenTimer = 10;
         $nextLevel = $id+1;

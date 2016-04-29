@@ -102,7 +102,7 @@ function screenTimerCountdown (seconds)
             clearInterval(timerBar);
             //redirect to next level
             
-            //postPicks();
+            postPicks();
         } else {
             $(elId).animate({
                 background: 'red',
