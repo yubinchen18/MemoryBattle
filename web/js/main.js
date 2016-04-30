@@ -4,10 +4,11 @@ var badPicks = [];
 //Interface functions
 
 
-//Timer Countdown then hide screen panel
+//Intro sequence, timer Countdown then hide screen panel
 function timerLoop (i) {
     setTimeout(function () {
         var timer = $('#timer');
+        //Number countdown, TODO rework
         timer.fadeOut(500);
         setTimeout(function(){
             timer.text(i).fadeIn(500);
@@ -102,7 +103,7 @@ function screenTimerCountdown (seconds)
             clearInterval(timerBar);
             //redirect to next level
             
-            postPicks();
+            //postPicks();
         } else {
             $(elId).animate({
                 background: 'red',

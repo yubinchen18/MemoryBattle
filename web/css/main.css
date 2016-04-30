@@ -105,7 +105,8 @@ body {
         left: 20%;
         top: 2.5%;
         height: 95%; 
-        width: auto
+        width: auto;
+        box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     
     #timer {
@@ -202,6 +203,24 @@ body {
         background-color: purple; 
         overflow: hidden;
         position: absolute
+    }
+    
+    #scoreboard {
+        position: absolute;
+        width: 60%;
+        height: 90%;
+        top: 5%;
+        left: 20%;
+        overflow: hidden;
+        box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background: white;
+    }
+    
+    #scoreboardPic {
+        position: absolute;
+        height: 100%;
+        top: 0px;
+        left: -150px;
     }
     
     .selected {
