@@ -1,5 +1,7 @@
 var goodPicks = [];
+var goodPicksPics = [];
 var badPicks = [];
+var badPicksPics = [];
 
 //Interface functions
 
@@ -78,6 +80,38 @@ function timerLoop (i) {
     }, 1000);
 };
 
+//List goodPicks badPicks
+function listPicks()
+{
+    //Parse picks to scoreboard, create lists
+        var goodUl = document.createElement("ul");
+        var badUl = document.createElement("ul");
+               
+        for (item in goodPicksPics) {
+            //create list element
+            var goodLi = document.createElement("li");
+            var goodLiPic = document.createElement("img");
+            goodLiPic.src = goodPicksPics[item];
+            goodLiPic.setAttribute("class",  "scoreboardPicks");
+            goodLi.appendChild(goodLiPic);
+            //add to list
+            goodUl.appendChild(goodLi);
+        };
+        for (item in badPicksPics) {
+            //create list element
+            var badLi = document.createElement("li");
+            var badLiPic = document.createElement("img");
+            badLiPic.src = badPicksPics[item];
+            badLiPic.setAttribute("class",  "scoreboardPicks");
+            badLi.appendChild(badLiPic);
+            //add to list
+            badUl.appendChild(badLi);
+        };
+        
+        //Show the lists
+        $('#goodScoreList').html(goodUl);
+        $('#badScoreList').html(badUl);
+}
 
 //Post goodPicks badPicks
 function postPicks()
@@ -168,7 +202,8 @@ $(function(){
     //Submit button
     
     $("#go").click(function(){
-        postPicks();
+        //postPicks();
+        listPicks();
     });
 
     //Highlight items
@@ -202,6 +237,7 @@ $(function(){
         $(this).toggleClass('selected');
         var pattern = /fake/;
         var currentId = $(this).attr('id');
+        var currentPic = $(this).attr('data-pic-src');
         var goodText = '';
         var badText = '';
         
@@ -218,8 +254,10 @@ $(function(){
             
             if (pattern.test(currentId)) {
                 badPicks.push(currentId);
+                badPicksPics.push(currentPic);
             } else {
                 goodPicks.push(currentId);
+                goodPicksPics.push(currentPic);
             };
         // on deselection remove from arrays
         } else {
@@ -234,19 +272,20 @@ $(function(){
             
             if (pattern.test(currentId)) {
                 badPicks.pop(currentId);
+                badPicksPics.pop(currentPic);
             } else {
                 goodPicks.pop(currentId);
+                badPicksPics.pop(currentPic);
             }
         };
-
+        
+        //Showing picks for testing
         for (item in goodPicks) {
             goodText += goodPicks[item] + ', ';
         };
         for (item in badPicks) {
             badText += badPicks[item] + ', ';
         };
-
-        //Showing picks for testing
         $('#gPicks').text(goodText);
         $('#bPicks').text(badText);
 

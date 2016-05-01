@@ -9,7 +9,7 @@
                 <ul id="itemContainer">
                     {% for item in items %}
                         <li>
-                            <div class="thumbnailContainer" id="{{item.name}}">
+                            <div class="thumbnailContainer" id="{{item.name}}" data-pic-src="{{asset(item.picture)}}">
                                 <img class="thumbnail" src="{{asset(item.picture)}}" alt="{{item.name}}"/>
                             </div>                       
                         </li>
@@ -46,7 +46,18 @@
             
         <div id="scoreboard">
             <img id="scoreboardPic" src="{{asset('images/statics/womanWithGlassesScoreCropped.jpg')}}" alt="scoreboardPic"/>
-            
+            <div id="goodScore">
+                <p>Good picks:</p>
+                <div id="goodScoreList">
+                    
+                </div>
+            </div>
+            <div id="badScore">
+                <p>Bad picks:</p>
+                <div id="badScoreList">
+                    
+                </div>
+            </div>
         </div>
     </div>
     
