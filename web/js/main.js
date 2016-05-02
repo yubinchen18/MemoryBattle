@@ -108,7 +108,7 @@ function listPicks()
             badUl.appendChild(badLi);
         };
         
-        //Show the lists
+        //Show the lists on scoreboard
         $('#goodScoreList').html(goodUl);
         $('#badScoreList').html(badUl);
 }

@@ -46,18 +46,25 @@
             
         <div id="scoreboard">
             <img id="scoreboardPic" src="{{asset('images/statics/womanWithGlassesScoreCropped.jpg')}}" alt="scoreboardPic"/>
-            <div id="goodScore">
-                <p>Good picks:</p>
-                <div id="goodScoreList">
-                    
+            <div id="scoreboardPanel">
+                <div id="goodScore">
+                    <p>Good picks</p>
+                    <div id="goodScoreList" class="scoreList">   
+                    </div>
                 </div>
-            </div>
-            <div id="badScore">
-                <p>Bad picks:</p>
-                <div id="badScoreList">
-                    
+                <div id="badScore">
+                    <p>Bad picks</p>
+                    <div id="badScoreList" class="scoreList">
+                    </div>
                 </div>
-            </div>
+                <div id="bonusScore">
+                    <p>Bonus</p>
+                </div>
+                <div id="totalScore">
+                    <p>Total score</p>
+                </div>
+                <button>Ready</button>
+            </div>            
         </div>
     </div>
     
