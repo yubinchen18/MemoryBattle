@@ -211,34 +211,40 @@ body {
         transform: translateY(-50%);
         width: 60%;
         left: 20%;
-        overflow: hidden;
+        overflow: auto;
         box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         background: white;
-        //visibility: hidden;
+        visibility: hidden;
     }
     
     #scoreboardPic {
         position: relative;
         width: 70%;
         height: auto;
-        top: 0px;
-        display: inline;
+        //top: 0px;
+        //display: flex;
         float: left;
         margin-right: -15%;
         //visibility: hidden;
     }
     
     #scoreboardPanel {
-        position: relative;
-        width: auto;
-        margin-top: 10%;
-        display: inline;
-        float: left;        
+        position: absolute;
+        width: 70%;
+        left: 55%;
+        top: 5%;
+        bottom: 15%;
+        //margin-top: 10%;
+        //margin-bottom: 10%;
+        //margin-bottom: auto;
+        //transform: translateY(-60%);
+        //display: flex;
+        //float: left;        
         background: #5eb5e0
     }
     
     .scoreList ul li {
-        display: inline-block;
+        display: inline;
         list-style-type: none;
         margin: 5px
     }

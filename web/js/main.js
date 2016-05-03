@@ -180,9 +180,10 @@ function getViewport() {
 // Functions after document ready, load sequence
 $(function(){
     //testing buttons
+    /*
     $("#timerBar0").click(function(){
         screenTimerCountdown (10);
-    });
+    });*/
     
     $("#hide").click(function(){
         $("#modelPanel").hide();
