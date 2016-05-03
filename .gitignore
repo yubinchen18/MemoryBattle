@@ -14,3 +14,4 @@
 
 .DS_Store
 app/config/parameters.yml
+composer.lock
