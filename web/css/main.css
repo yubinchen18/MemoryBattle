@@ -207,28 +207,33 @@ body {
     
     #scoreboard {
         position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         width: 60%;
-        height: 90%;
-        top: 5%;
         left: 20%;
         overflow: hidden;
         box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         background: white;
+        //visibility: hidden;
     }
     
     #scoreboardPic {
-        position: absolute;
-        height: 100%;
+        position: relative;
+        width: 70%;
+        height: auto;
         top: 0px;
-        left: 0px;
+        display: inline;
+        float: left;
+        margin-right: -15%;
         //visibility: hidden;
     }
     
     #scoreboardPanel {
-        position: absolute;
-        height: 100%;
-        top: 0px;
-        left: 50%;
+        position: relative;
+        width: auto;
+        margin-top: 10%;
+        display: inline;
+        float: left;        
         background: #5eb5e0
     }
     
@@ -250,7 +255,7 @@ body {
         //box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     
-    
+
 
     @media (min-width: 768px) {
         #wrapper { width: 80%; margin: 2em auto; }

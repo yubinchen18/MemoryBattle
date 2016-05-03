@@ -275,7 +275,7 @@ $(function(){
                 badPicksPics.pop(currentPic);
             } else {
                 goodPicks.pop(currentId);
-                badPicksPics.pop(currentPic);
+                goodPicksPics.pop(currentPic);
             }
         };
         

@@ -22,7 +22,7 @@
                 {% endfor %}
                 <p id="viewport">asdf</p>
                 <a href ="{{ path('level', {'id': nextLevel}) }}">go</a>
-                <button id='go'>go</button>
+                <!--<button id='go'>go</button>-->
                 <p id='score'>Current score is: {{score}}</p>
             </div>
         </div>
@@ -45,7 +45,9 @@
         </div>
             
         <div id="scoreboard">
-            <img id="scoreboardPic" src="{{asset('images/statics/womanWithGlassesScoreCropped.jpg')}}" alt="scoreboardPic"/>
+            <!--<div id="scoreboardPicContainer">-->
+                <img id="scoreboardPic" src="{{asset('images/statics/womanWithGlassesScoreCropped.jpg')}}" alt="scoreboardPic"/>
+            <!--</div>-->                
             <div id="scoreboardPanel">
                 <div id="goodScore">
                     <p>Good picks</p>
@@ -63,7 +65,7 @@
                 <div id="totalScore">
                     <p>Total score</p>
                 </div>
-                <button>Ready</button>
+                <button id="go">Ready</button>
             </div>            
         </div>
     </div>
