@@ -214,7 +214,7 @@ body {
         overflow: auto;
         box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         background: white;
-        visibility: hidden;
+        //visibility: hidden;
     }
     
     #scoreboardPic {
@@ -243,15 +243,58 @@ body {
         background: #5eb5e0
     }
     
-    .scoreList ul li {
-        display: inline;
-        list-style-type: none;
-        margin: 5px
+    .scoreDivs {
+        position: relative;
+        height: 22%;
     }
     
+    .scoreLabels {
+        position: absolute;
+        height: 18%;
+        width: 100%;
+        background: black;
+        padding-left : 10px;
+        padding-bottom: 1px;
+        //overflow: hidden;
+    }
+    
+    #scoreboardPanel p{
+        font-family: "franklin-gothic-urw", "Arial Narrow", Arial, sans-serif;
+        color: white;
+        //background: black;
+        font-size: 20px;
+        font-size: 1.0vw;
+    }
+    
+    .scoreLists {
+        position: absolute;
+        bottom: 0px;
+        height: 82%;
+        width: 100%;
+        background: red;
+    }
+    
+    /*
+    .scoreLists ul {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        padding: 0px;
+        list-style-type: none;
+    }
+    
+    .scoreLists ul li {
+        position: relative;
+        display: inline-block;
+        list-style-type: none;
+        //margin: 5px
+    }*/
+    
     .scoreboardPicks {
-        height: 150px;
+        position: relative;
+        height: 100%;
         width: auto;
+        display: inline-block;
     }
     
     .selected {

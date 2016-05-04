@@ -84,18 +84,20 @@ function timerLoop (i) {
 function listPicks()
 {
     //Parse picks to scoreboard, create lists
-        var goodUl = document.createElement("ul");
+        //var goodUl = document.createElement("ul");
+        var goodUl = document.createElement("div");
+        goodUl.setAttribute("class", "scoreListDiv")
         var badUl = document.createElement("ul");
                
         for (item in goodPicksPics) {
             //create list element
-            var goodLi = document.createElement("li");
+            //var goodLi = document.createElement("li");
             var goodLiPic = document.createElement("img");
             goodLiPic.src = goodPicksPics[item];
             goodLiPic.setAttribute("class",  "scoreboardPicks");
-            goodLi.appendChild(goodLiPic);
+            //goodLi.appendChild(goodLiPic);
             //add to list
-            goodUl.appendChild(goodLi);
+            goodUl.appendChild(goodLiPic);
         };
         for (item in badPicksPics) {
             //create list element

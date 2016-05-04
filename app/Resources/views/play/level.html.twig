@@ -41,7 +41,7 @@
         
         <div id="modelPanel">
             <img id="model" src="{{asset(model.picture)}}" alt="{{model.name}}"/>
-            <h1 id="timer">5</h1>
+            <h1 id="timer">2</h1>
         </div>
             
         <div id="scoreboard">
@@ -49,23 +49,31 @@
                 <img id="scoreboardPic" src="{{asset('images/statics/womanWithGlassesScoreCropped.jpg')}}" alt="scoreboardPic"/>
             <!--</div>-->                
             <div id="scoreboardPanel">
-                <div id="goodScore">
-                    <p>Good picks</p>
-                    <div id="goodScoreList" class="scoreList">   
+                <div id="goodScore" class="scoreDivs">
+                    <div class="scoreLabels">
+                        <p>Good picks</p>                    
+                    </div>
+                    <div id="goodScoreList" class="scoreLists">
                     </div>
                 </div>
-                <div id="badScore">
-                    <p>Bad picks</p>
-                    <div id="badScoreList" class="scoreList">
+                <div id="badScore" class="scoreDivs">
+                    <div class="scoreLabels">
+                        <p>Bad picks</p>
+                    </div>
+                    <div id="badScoreList" class="scoreLists">
                     </div>
                 </div>
-                <div id="bonusScore">
-                    <p>Bonus</p>
+                <div id="bonusScore" class="scoreDivs">
+                    <div class="scoreLabels">
+                        <p>Bonus</p>
+                    </div>
+                    <div id="bonusScoreList" class="scoreLists">
+                    </div>
                 </div>
                 <div id="totalScore">
                     <p>Total score</p>
+                    <button id="go">Ready</button>
                 </div>
-                <button id="go">Ready</button>
             </div>            
         </div>
     </div>
