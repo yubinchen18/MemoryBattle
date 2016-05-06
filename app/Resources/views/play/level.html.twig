@@ -7,12 +7,19 @@
         <div id="screen">
             <div id="modelItems">
                 <ul id="itemContainer">
+                    {% set nbOfFakeItems = 0 %}
+                    {% set nbOfRealItems = 0 %}
                     {% for item in items %}
                         <li>
                             <div class="thumbnailContainer" id="{{item.name}}" data-pic-src="{{asset(item.picture)}}">
                                 <img class="thumbnail" src="{{asset(item.picture)}}" alt="{{item.name}}"/>
                             </div>                       
                         </li>
+                        {% if item.fake %}
+                            {% set nbOfFakeItems = nbOfFakeItems + 1 %}
+                        {% else %}
+                            {% set nbOfRealItems = nbOfRealItems + 1 %}
+                        {% endif %}
                     {% endfor %}   
                 </ul>
             </div>
@@ -24,6 +31,8 @@
                 <a href ="{{ path('level', {'id': nextLevel}) }}">go</a>
                 <!--<button id='go'>go</button>-->
                 <p id='score'>Current score is: {{score}}</p>
+                <p>Number of fake items: {{nbOfFakeItems}}</p>
+                <p>Number of real items: {{nbOfRealItems}}</p>
             </div>
         </div>
                 

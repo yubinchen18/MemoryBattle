@@ -10,6 +10,7 @@
                 <th>Name</th>
                 <th>Category</th>
                 <th>Price</th>
+                <th>Fake</th>
                 <th>Picture</th>
                 <th>Description</th>
                 <th>Actions</th>
@@ -22,6 +23,7 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.category }}</td>
                 <td>{{ item.price }}</td>
+                <td>{% if item.fake %}Yes{% else %}No{% endif %}</td>
                 <td>{{ item.picture }}</td>
                 <td>{{ item.description }}</td>
                 <td>

@@ -22,6 +22,10 @@
                 <td>{{ item.price }}</td>
             </tr>
             <tr>
+                <th>Fake</th>
+                <td>{% if item.fake %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
                 <th>Picture</th>
                 <td>{{ item.picture }}</td>
             </tr>

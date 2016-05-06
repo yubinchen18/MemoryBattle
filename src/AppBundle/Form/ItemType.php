@@ -18,6 +18,7 @@ class ItemType extends AbstractType
             ->add('name')
             ->add('category')
             ->add('price')
+            ->add('fake')
             ->add('picture')
             ->add('description')
             ->add('model')

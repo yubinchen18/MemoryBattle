@@ -2,6 +2,7 @@ var goodPicks = [];
 var goodPicksPics = [];
 var badPicks = [];
 var badPicksPics = [];
+var bonus = [];
 
 //Interface functions
 
@@ -83,36 +84,54 @@ function timerLoop (i) {
 //List goodPicks badPicks
 function listPicks()
 {
-    //Parse picks to scoreboard, create lists
-        //var goodUl = document.createElement("ul");
-        var goodUl = document.createElement("div");
-        goodUl.setAttribute("class", "scoreListDiv")
-        var badUl = document.createElement("ul");
+    //Parse picks to scoreboard, create lists        
+        var goodScoreList = $('#goodScoreList');
+        var badScoreList = $('#badScoreList');
+        
+        goodScoreList.empty();
+        badScoreList.empty();
                
         for (item in goodPicksPics) {
             //create list element
-            //var goodLi = document.createElement("li");
+            var goodLi = document.createElement("div");
+            goodLi.setAttribute("class", "scoreboardPicksContainer");
             var goodLiPic = document.createElement("img");
             goodLiPic.src = goodPicksPics[item];
             goodLiPic.setAttribute("class",  "scoreboardPicks");
-            //goodLi.appendChild(goodLiPic);
+            goodLi.appendChild(goodLiPic);
             //add to list
-            goodUl.appendChild(goodLiPic);
+            goodScoreList.append(goodLi);
         };
+        
         for (item in badPicksPics) {
             //create list element
-            var badLi = document.createElement("li");
+            var badLi = document.createElement("div");
+            badLi.setAttribute("class", "scoreboardPicksContainer");
             var badLiPic = document.createElement("img");
             badLiPic.src = badPicksPics[item];
             badLiPic.setAttribute("class",  "scoreboardPicks");
             badLi.appendChild(badLiPic);
             //add to list
-            badUl.appendChild(badLi);
+            badScoreList.append(badLi);
         };
         
-        //Show the lists on scoreboard
-        $('#goodScoreList').html(goodUl);
-        $('#badScoreList').html(badUl);
+        //Sums up scores
+        var goodSum = document.createElement("div");
+        goodSum.setAttribute("class", "scoreSum");
+        var goodSumContent = document.createElement("h2");
+        goodSumContent.setAttribute("class", "scoreSumContent");
+        goodSumContent.appendChild(document.createTextNode("+"+goodPicks.length));
+        goodSum.appendChild(goodSumContent);
+        goodScoreList.append(goodSum);
+        
+        
+        var badSum = document.createElement("div");
+        badSum.setAttribute("class", "scoreSum");
+        var badSumContent = document.createElement("h2");
+        badSumContent.setAttribute("class", "scoreSumContent");
+        badSumContent.appendChild(document.createTextNode("-"+badPicks.length));
+        badSum.appendChild(badSumContent);
+        badScoreList.append(badSum);
 }
 
 //Post goodPicks badPicks

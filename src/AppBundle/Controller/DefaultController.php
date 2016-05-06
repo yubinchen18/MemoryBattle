@@ -47,9 +47,10 @@ class DefaultController extends Controller
         }
         
         //Get items from DB
-        $items = $this->getDoctrine()
-                ->getRepository('AppBundle:Item')
-                ->findByModel($id);
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Item');
+        $items = $repository->findByModel($id);
+                
+        //Randomize
         shuffle($items);
         
         //Get request parameters
@@ -149,6 +150,12 @@ class DefaultController extends Controller
                             $dbItem->setModel($model[0]);
                             $dbItem->setDescription('Script test');
                             $dbItem->setPicture($dir.'/'.$item);
+                            if (preg_match('#fake#', $item))
+                            {
+                                $dbItem->setFake(true);
+                            } else {
+                                $dbItem->setFake(false);
+                            }
                             $em->persist($dbItem);
                     }                    
                 } 

@@ -41,6 +41,11 @@ class Item
     protected $price;
     
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $fake;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="picture", type="string", length=255)
@@ -207,5 +212,29 @@ class Item
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set fake
+     *
+     * @param boolean $fake
+     *
+     * @return Item
+     */
+    public function setFake($fake)
+    {
+        $this->fake = $fake;
+
+        return $this;
+    }
+
+    /**
+     * Get fake
+     *
+     * @return boolean
+     */
+    public function getFake()
+    {
+        return $this->fake;
     }
 }

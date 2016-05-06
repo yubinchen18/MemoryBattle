@@ -1,6 +1,6 @@
 body {
         font: 18px/1.5 sans-serif;
-        font-family: "Georgia", serif;
+        font-family: "adobe-caslon-pro", serif;;
     }
     
     h1, h2 { 
@@ -233,13 +233,7 @@ body {
         width: 70%;
         left: 55%;
         top: 5%;
-        bottom: 15%;
-        //margin-top: 10%;
-        //margin-bottom: 10%;
-        //margin-bottom: auto;
-        //transform: translateY(-60%);
-        //display: flex;
-        //float: left;        
+        bottom: 15%;     
         background: #5eb5e0
     }
     
@@ -269,32 +263,47 @@ body {
     .scoreLists {
         position: absolute;
         bottom: 0px;
-        height: 82%;
+        height: 81%;
         width: 100%;
-        background: red;
+        //background: red;
     }
     
-    /*
-    .scoreLists ul {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        padding: 0px;
-        list-style-type: none;
-    }
-    
-    .scoreLists ul li {
-        position: relative;
-        display: inline-block;
-        list-style-type: none;
-        //margin: 5px
-    }*/
-    
-    .scoreboardPicks {
+    .scoreboardPicksContainer{
         position: relative;
         height: 100%;
-        width: auto;
+        width: 14%;
         display: inline-block;
+        margin-left: 5px;
+        background: white;
+    }
+    
+    .scoreboardPicks {
+        height: 100%; 
+        width: auto; 
+        position: absolute;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        margin: auto
+    }
+    
+    .scoreSum {
+        position: relative;
+        height: 100%;
+        width: 14%;
+        //display: inline-block;
+        float: right;
+        margin-left: 5px;
+    }
+    
+    .scoreSumContent {
+        position: absolute;
+        margin: auto;
+        bottom: 1px;
+        right: 2px;
+        font-size: 3vw;
+        font-style: italic;
     }
     
     .selected {
