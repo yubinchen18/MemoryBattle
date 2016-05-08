@@ -1,8 +1,11 @@
+//Global variables
 var goodPicks = [];
 var goodPicksPics = [];
 var badPicks = [];
 var badPicksPics = [];
-var bonus = [];
+var bonusList = [];
+var timerBar = '';
+//var screenTimerLeft = 0;
 
 //Interface functions
 
@@ -81,16 +84,25 @@ function timerLoop (i) {
     }, 1000);
 };
 
-//List goodPicks badPicks
-function listPicks()
+//List goodPicks badPicks and calculate bonus
+function listScores()
 {
     //Parse picks to scoreboard, create lists        
         var goodScoreList = $('#goodScoreList');
         var badScoreList = $('#badScoreList');
+        var bonusScoreList = $('#bonusScoreList');
+        var totalScoreList = $('#totalScoreList');
         
         goodScoreList.empty();
         badScoreList.empty();
+        bonusScoreList.empty();
+        totalScoreList.empty();
+        bonusList = [];
+        
+        //Stops timer
+        stopScreenTimerCountdown();
                
+        //Fill good and bad scores
         for (item in goodPicksPics) {
             //create list element
             var goodLi = document.createElement("div");
@@ -115,6 +127,37 @@ function listPicks()
             badScoreList.append(badLi);
         };
         
+        //Determine bonus list based on conditions
+        // Only good picks
+        if (goodPicks.length == nbOfRealItems && badPicks.length == 0)
+        {
+            bonusList.push('- Flawless memory! (' + goodPicks.length + ' out of ' + nbOfRealItems + ')');
+            console.log(bonusList);
+        }
+        
+        // Only good picks and within time limit
+        if (goodPicks.length == nbOfRealItems && badPicks.length == 0 && screenTimerLeft > 0)
+        {
+            bonusList.push('- Within timelimit! (' + screenTimerLeft + ((screenTimerLeft > 1)? ' seconds': ' second') + ' left)');
+        }
+        
+        // Fill bonus list
+        var bonusDiv = document.createElement("div");
+        bonusDiv.setAttribute("class", "bonusListContainer");
+        var bonusUl = document.createElement("ul");
+        for (bonus in bonusList) {
+            //create list element
+            var bonusLi = document.createElement("li");
+            var bonusLiSpan = document.createElement("span");
+            bonusLiSpan.appendChild(document.createTextNode(bonusList[bonus]));
+            bonusLi.appendChild(bonusLiSpan);
+            bonusUl.appendChild(bonusLi);
+        }
+        bonusDiv.appendChild(bonusUl);
+        //add to list
+        bonusScoreList.append(bonusDiv);
+        
+        
         //Sums up scores
         var goodSum = document.createElement("div");
         goodSum.setAttribute("class", "scoreSum");
@@ -122,8 +165,7 @@ function listPicks()
         goodSumContent.setAttribute("class", "scoreSumContent");
         goodSumContent.appendChild(document.createTextNode("+"+goodPicks.length));
         goodSum.appendChild(goodSumContent);
-        goodScoreList.append(goodSum);
-        
+        goodScoreList.append(goodSum);        
         
         var badSum = document.createElement("div");
         badSum.setAttribute("class", "scoreSum");
@@ -132,6 +174,23 @@ function listPicks()
         badSumContent.appendChild(document.createTextNode("-"+badPicks.length));
         badSum.appendChild(badSumContent);
         badScoreList.append(badSum);
+        
+        var bonusSum = document.createElement("div");
+        bonusSum.setAttribute("class", "scoreSum");
+        var bonusSumContent = document.createElement("h2");
+        bonusSumContent.setAttribute("class", "scoreSumContent");
+        bonusSumContent.appendChild(document.createTextNode("+"+bonusList.length));
+        bonusSum.appendChild(bonusSumContent);
+        bonusScoreList.append(bonusSum);
+        
+        //Calculate total score
+        var totalScoreContent = goodPicks.length - badPicks.length + bonusList.length;
+        var totalScore = document.createElement("div");
+        totalScore.setAttribute("class", "totalScoreSum");
+        totalScore.appendChild(document.createTextNode(totalScoreContent));
+        totalScoreList.append(totalScore);
+        //totalScoreList
+        
 }
 
 //Post goodPicks badPicks
@@ -149,7 +208,7 @@ function screenTimerCountdown (seconds)
 {
     var second = 0;
     frame();
-    var timerBar = setInterval(frame, 1000);
+    timerBar = setInterval(frame, 1000);
     function frame()
     {
         var elId = String('#timerBar'+second);
@@ -157,16 +216,23 @@ function screenTimerCountdown (seconds)
         {
             clearInterval(timerBar);
             //redirect to next level
-            
+            listScores();
             //postPicks();
         } else {
             $(elId).animate({
                 background: 'red',
                 opacity: '0'
             }, 800);
+            screenTimerLeft--;
+            //console.log(screenTimerLeft);
             second++;   
         };
     };
+}
+
+function stopScreenTimerCountdown()
+{
+    clearInterval(timerBar);
 }
 
 //Get viewport
@@ -205,6 +271,9 @@ $(function(){
     $("#timerBar0").click(function(){
         screenTimerCountdown (10);
     });*/
+    $("#stop").click(function(){
+        stopScreenTimerCountdown();
+    });
     
     $("#hide").click(function(){
         $("#modelPanel").hide();
@@ -225,7 +294,7 @@ $(function(){
     
     $("#go").click(function(){
         //postPicks();
-        listPicks();
+        listScores();
     });
 
     //Highlight items

@@ -29,7 +29,7 @@
                 {% endfor %}
                 <p id="viewport">asdf</p>
                 <a href ="{{ path('level', {'id': nextLevel}) }}">go</a>
-                <!--<button id='go'>go</button>-->
+                <button id='stop'>stop</button>
                 <p id='score'>Current score is: {{score}}</p>
                 <p>Number of fake items: {{nbOfFakeItems}}</p>
                 <p>Number of real items: {{nbOfRealItems}}</p>
@@ -80,9 +80,14 @@
                     </div>
                 </div>
                 <div id="totalScore">
-                    <p>Total score</p>
-                    <button id="go">Ready</button>
+                    <div class="scoreLabels">
+                        <p>Total score</p>
+                    </div>
+                    <div id="totalScoreList" class="scoreLists">    
+                    </div>
+                    
                 </div>
+                <button id="go"><span>Ready</span></button>
             </div>            
         </div>
     </div>
@@ -92,7 +97,11 @@
         <input id="badPicks" type="hidden" name="badPicks" value="">
     </form>
     
-    
+    <script>
+        var nbOfFakeItems = {{nbOfFakeItems}};
+        var nbOfRealItems = {{nbOfRealItems}};
+        var screenTimerLeft = {{screenTimer}};
+    </script>
 {% endblock %}
 
 {% block javascripts %}

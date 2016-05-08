@@ -1,5 +1,4 @@
 body {
-        font: 18px/1.5 sans-serif;
         font-family: "adobe-caslon-pro", serif;;
     }
     
@@ -234,7 +233,7 @@ body {
         left: 55%;
         top: 5%;
         bottom: 15%;     
-        background: #5eb5e0
+        //background: #5eb5e0
     }
     
     .scoreDivs {
@@ -248,14 +247,14 @@ body {
         width: 100%;
         background: black;
         padding-left : 10px;
-        padding-bottom: 1px;
-        //overflow: hidden;
     }
     
     #scoreboardPanel p{
         font-family: "franklin-gothic-urw", "Arial Narrow", Arial, sans-serif;
         color: white;
-        //background: black;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
         font-size: 20px;
         font-size: 1.0vw;
     }
@@ -304,6 +303,93 @@ body {
         right: 2px;
         font-size: 3vw;
         font-style: italic;
+    }
+    
+    .bonusListContainer {
+        position: relative;
+        height: 100%;
+        width: 60%;
+        display: inline-block;
+        margin-left: 5px;
+        background: white;
+    }
+    
+    .bonusListContainer ul {
+        position: absolute;
+        display: table;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: auto;
+        padding: 0px;
+        margin: 0px;
+        padding-left: 8%;
+    }
+    
+    .bonusListContainer li {
+        display: table-row;
+        font-size: 1.5vw;
+    }
+    
+    .bonusListContainer li span{
+        display: table-cell;
+        vertical-align: middle;
+        font-family: "franklin-gothic-urw", "Arial Narrow", Arial, sans-serif;
+    }
+    
+    #totalScore {
+        position: relative;
+        height: 30%;
+    }
+    
+    .totalScoreSum {
+        position: absolute;
+        height: 100%;
+        width: auto;
+        left: 40%;
+        text-align: center;
+        font-size: 12vw;
+        font-style: italic;
+    }
+    
+    #go {
+        display: inline-block;
+        background-color: black;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 2vw;
+        padding: 20px;
+        width: 10%;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+    
+    #go span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+    
+    /*
+    #go span:after {
+        content: '»';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }*/
+    
+    #go:hover span {
+        padding-right: 25px;
+    }
+
+    #go:hover span:after {
+      opacity: 1;
+      right: 0;
     }
     
     .selected {
