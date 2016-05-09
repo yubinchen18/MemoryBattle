@@ -244,7 +244,7 @@ body {
     .scoreLabels {
         position: absolute;
         height: 18%;
-        width: 100%;
+        width: 90%;
         background: black;
         padding-left : 10px;
     }
@@ -263,7 +263,7 @@ body {
         position: absolute;
         bottom: 0px;
         height: 81%;
-        width: 100%;
+        width: 90%;
         //background: red;
     }
     
@@ -348,48 +348,46 @@ body {
         width: auto;
         left: 40%;
         text-align: center;
-        font-size: 12vw;
+        font-size: 10vw;
         font-style: italic;
     }
     
     #go {
-        display: inline-block;
-        background-color: black;
-        border: none;
-        color: #FFFFFF;
-        text-align: center;
-        font-size: 2vw;
-        padding: 20px;
-        width: 10%;
-        transition: all 0.5s;
+        position: absolute;
+        height: 10%;
+        width: 20%;
+        right: 10%;
+        bottom: -10%;
+        background-color: white;
+        border: 1px solid black;
+        text-decoration: none;
+        font-size: 1vw;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
         cursor: pointer;
-        margin: 5px;
+        font-family: "franklin-gothic-urw", "Arial Narrow", Arial, sans-serif;
     }
     
     #go span {
         cursor: pointer;
         display: inline-block;
         position: relative;
-        transition: 0.5s;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        color: black;
+        font-family: 
     }
     
-    /*
-    #go span:after {
-        content: '»';
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
-    }*/
+    #go:hover {
+        background-color: #a02727;
+        border: 1px solid #a02727;
+        right: 8%;
+    }
     
     #go:hover span {
-        padding-right: 25px;
-    }
-
-    #go:hover span:after {
-      opacity: 1;
-      right: 0;
+        padding-left: 10px;
+        color: white;
+        font-style: italic;
     }
     
     .selected {

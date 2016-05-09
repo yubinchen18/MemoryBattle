@@ -80,7 +80,7 @@ class DefaultController extends Controller
             }
             
         }
-        
+
         //Level specific data such as timer
         $screenTimer = 10;
         $nextLevel = $id+1;
@@ -185,5 +185,13 @@ class DefaultController extends Controller
         $em->clear();
         
         return new Response(var_dump($list));
+    }
+    
+    /**
+     * @Route("/admin")
+     */
+    public function adminAction()
+    {
+        return new Response('<html><body>Admin Page!</body><html>');
     }
 }
