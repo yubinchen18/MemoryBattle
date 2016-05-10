@@ -210,10 +210,10 @@ body {
         transform: translateY(-50%);
         width: 60%;
         left: 20%;
-        overflow: auto;
+        overflow: hidden;
         box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         background: white;
-        //visibility: hidden;
+        display: none;
     }
     
     #scoreboardPic {
@@ -239,6 +239,7 @@ body {
     .scoreDivs {
         position: relative;
         height: 22%;
+        display: none;
     }
     
     .scoreLabels {
@@ -340,6 +341,7 @@ body {
     #totalScore {
         position: relative;
         height: 30%;
+        display: none;
     }
     
     .totalScoreSum {

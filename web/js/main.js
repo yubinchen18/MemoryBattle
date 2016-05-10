@@ -191,6 +191,42 @@ function listScores()
         totalScoreList.append(totalScore);
         //totalScoreList
         
+        //Animation sequence
+        //modelItems and timer disappear
+        var modelItems = $('#modelItems');
+        var screenTimer = $('#screenTimer');
+        var scoreboard = $('#scoreboard');
+        var scoreboardPic = $('#scoreboardPic');
+        var scoreboardPanel = $('#scoreboardPanel');
+        
+        modelItems.fadeOut(500);
+        screenTimer.fadeOut(500);
+        scoreboard.show().css({
+            top: '-50%',
+            opacity: '0',
+        }).
+        animate({
+            top : '50%',
+            opacity: '1'
+        }, 1000, 'easeOutQuart');
+        
+        setTimeout(function(){
+            scoreboardPic.animate({
+                left: '-22%'
+            }, 1000, 'easeOutQuint');
+            scoreboardPanel.animate({
+                left: '30%'
+            }, 1000, 'easeOutQuint');
+        }, 1000);
+        
+        setTimeout(function(){
+            $('.scoreDivs').each(function(index) {
+                $(this).delay(1000*index).fadeIn(500);
+            });
+            
+            $('#totalScore').delay(3300).fadeIn(1000);
+            
+        }, 2000);
 }
 
 //Post goodPicks badPicks
@@ -271,8 +307,10 @@ $(function(){
     $("#timerBar0").click(function(){
         screenTimerCountdown (10);
     });*/
-    $("#stop").click(function(){
-        stopScreenTimerCountdown();
+    
+    //submit picks scoreboard appear
+    $("#submitPicks").click(function(){
+        listScores();
     });
     
     $("#hide").click(function(){
