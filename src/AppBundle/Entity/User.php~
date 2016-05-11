@@ -57,6 +57,11 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
     
+    /**
+     * @ORM\Column(type="string", length=25) 
+     */
+    private $roles;
+    
     public function __construct()
     {
         $this->isActive = true;
@@ -76,9 +81,15 @@ class User implements UserInterface, \Serializable
         return null;
     }
     
+    
     public function getPassword()
     {
         return $this->password;
+    }
+    
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
     }
     
     public function getRoles()
@@ -151,6 +162,11 @@ class User implements UserInterface, \Serializable
         $this->password = $password;
 
         return $this;
+    }
+    
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
     }
 
     /**

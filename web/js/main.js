@@ -5,6 +5,7 @@ var badPicks = [];
 var badPicksPics = [];
 var bonusList = [];
 var timerBar = '';
+var endScore = 0;
 //var screenTimerLeft = 0;
 
 //Interface functions
@@ -189,6 +190,8 @@ function listScores()
         totalScore.setAttribute("class", "totalScoreSum");
         totalScore.appendChild(document.createTextNode(totalScoreContent));
         totalScoreList.append(totalScore);
+        endScore = totalScoreContent;
+        console.log (endScore);
         //totalScoreList
         
         //Animation sequence
@@ -236,6 +239,8 @@ function postPicks()
     var badPicksObj = {items: badPicks, count: badPicks.length};    
     $('#goodPicks').attr('value', JSON.stringify(goodPicksObj));
     $('#badPicks').attr('value', JSON.stringify(badPicksObj));
+    $('#endScore').attr('value', endScore);
+    $('#level').attr('value', levelId);
     $('#picks').submit();
 }
 
@@ -252,7 +257,7 @@ function screenTimerCountdown (seconds)
         {
             clearInterval(timerBar);
             //redirect to next level
-            //listScores();
+            listScores();
             //postPicks();
         } else {
             $(elId).animate({
@@ -331,8 +336,8 @@ $(function(){
     //Submit button
     
     $("#go").click(function(){
-        //postPicks();
-        listScores();
+        postPicks();
+        //listScores();
     });
 
     //Highlight items

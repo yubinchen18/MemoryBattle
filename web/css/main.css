@@ -188,10 +188,48 @@ body {
     }
     
     .timerBars {
-        margin-top: 6%;
+        margin-top: 2%;
         height: 5%;
-        width: 70%;
+        width: 50%;
         background: black;
+    }
+    
+    #submitPicks {
+        position: absolute;
+        height: 10%;
+        width: 100%;
+        left: 0%;
+        bottom: 10%;
+        background-color: white;
+        border: 1px solid black;
+        text-decoration: none;
+        font-size: 1.2vw;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer;
+        font-family: "franklin-gothic-urw", "Arial Narrow", Arial, sans-serif;
+    }
+    
+    #submitPicks span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        color: black;
+        font-family: "adobe-caslon-pro", serif;
+    }
+    
+    #submitPicks:hover {
+        background-color: #a02727;
+        border: 1px solid #a02727;
+        left: 8%;
+    }
+    
+    #submitPicks:hover span {
+        padding-left: 10px;
+        color: white;
+        font-style: italic;
     }
     
     #controlePanel {
@@ -388,44 +426,6 @@ body {
     }
     
     #go:hover span {
-        padding-left: 10px;
-        color: white;
-        font-style: italic;
-    }
-    
-    #submitPicks {
-        position: absolute;
-        height: 10%;
-        width: 100%;
-        right: 10%;
-        bottom: -5%;
-        background-color: white;
-        border: 1px solid black;
-        text-decoration: none;
-        font-size: 1.2vw;
-        -webkit-transition-duration: 0.4s; /* Safari */
-        transition-duration: 0.4s;
-        cursor: pointer;
-        font-family: "franklin-gothic-urw", "Arial Narrow", Arial, sans-serif;
-    }
-    
-    #submitPicks span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        -webkit-transition-duration: 0.4s; /* Safari */
-        transition-duration: 0.4s;
-        color: black;
-        font-family: "adobe-caslon-pro", serif;
-    }
-    
-    #submitPicks:hover {
-        background-color: #a02727;
-        border: 1px solid #a02727;
-        right: 8%;
-    }
-    
-    #submitPicks:hover span {
         padding-left: 10px;
         color: white;
         font-style: italic;

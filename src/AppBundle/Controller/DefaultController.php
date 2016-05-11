@@ -45,7 +45,7 @@ class DefaultController extends Controller
                 'No model found for id '.$id
             );
         }
-        
+        //var_dump($_POST);
         //Get items from DB
         $repository = $this->getDoctrine()->getRepository('AppBundle:Item');
         $items = $repository->findByModel($id);
@@ -73,11 +73,11 @@ class DefaultController extends Controller
              */
             
             
-            if ($request->request->has('goodPicks') && $request->request->has('badPicks'))
-            {
-                $newScore = $session->get('score') + ($goodPicks->count - $badPicks->count);
+            //if ($request->request->has('goodPicks') && $request->request->has('badPicks'))
+            
+                $newScore = $session->get('score') + ($request->request->get('score'));
                 $session->set('score', $newScore);
-            }
+            
             
         }
 
@@ -91,7 +91,8 @@ class DefaultController extends Controller
             'model' => $model,
             'screenTimer' => $screenTimer,
             'nextLevel' => $nextLevel,
-            'score' => $score
+            'score' => $score,
+            'levelId' => $id
         ));
     }
     

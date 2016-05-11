@@ -57,6 +57,11 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
     
+    /**
+     * @ORM\Column(type="string", length=25) 
+     */
+    private $roles;
+    
     public function __construct()
     {
         $this->isActive = true;
@@ -210,5 +215,19 @@ class User implements UserInterface, \Serializable
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param string $roles
+     *
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 }
