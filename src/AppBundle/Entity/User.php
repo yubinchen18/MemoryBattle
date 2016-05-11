@@ -10,12 +10,16 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
+ * @UniqueEntity(fields="email", message="Email already taken")
+ * @UniqueEntity(fields="username", message="Username already taken")
  */
-class User implements Userinterface, \Serializable
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Column(type="integer")
@@ -26,8 +30,15 @@ class User implements Userinterface, \Serializable
     
     /**
      * @ORM\Column(type="string", length=25, unique=true)
+     * @Assert\NotBlank()
      */
     private $username;
+    
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
     
     /**
      * @ORM\Column(type="string", length=64)
@@ -36,6 +47,8 @@ class User implements Userinterface, \Serializable
     
     /**
      * @ORM\Column(type="string", length=60, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
     
@@ -63,9 +76,15 @@ class User implements Userinterface, \Serializable
         return null;
     }
     
+    
     public function getPassword()
     {
         return $this->password;
+    }
+    
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
     }
     
     public function getRoles()
@@ -138,6 +157,11 @@ class User implements Userinterface, \Serializable
         $this->password = $password;
 
         return $this;
+    }
+    
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
     }
 
     /**

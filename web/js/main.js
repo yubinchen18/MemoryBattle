@@ -252,7 +252,7 @@ function screenTimerCountdown (seconds)
         {
             clearInterval(timerBar);
             //redirect to next level
-            listScores();
+            //listScores();
             //postPicks();
         } else {
             $(elId).animate({
