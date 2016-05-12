@@ -14,7 +14,7 @@ use AppBundle\Form\ItemType;
  * Item controller.
  *
  * @Route("/item")
- * @Security("has_role('ROLE_ADMIN')")
+ * 
  */
 class ItemController extends Controller
 {

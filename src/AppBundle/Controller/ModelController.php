@@ -14,7 +14,7 @@ use AppBundle\Form\ModelType;
  * Model controller.
  *
  * @Route("/model")
- * @Security("has_role('ROLE_ADMIN')")
+ * 
  */
 class ModelController extends Controller
 {

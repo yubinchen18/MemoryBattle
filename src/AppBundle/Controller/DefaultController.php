@@ -335,6 +335,16 @@ class DefaultController extends Controller
     }
     
     /**
+     * @Route("/presentatie")
+     */
+    public function presentAction()
+    {
+        return $this->render('eindpresentatie.html.twig', [
+        ]);
+    }
+    
+    
+    /**
      * @Route("/admin")
      */
     public function adminAction()
