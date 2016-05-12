@@ -1,0 +1,19 @@
+{# empty Twig template #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1> {{app.user.username}} </h1>
+    
+    <h1>Your final score is: </h1>
+    <span> {{score}} </span>
+    
+    <h1>Rank: </h1>
+    <span> FASHIONISTA </span>
+    
+    <div>
+        Highscores:
+        {% for item in items %}
+            {{item.userId.username}} {{item.FinalScore}}
+        {% endfor %}
+    </div>
+{% endblock %}

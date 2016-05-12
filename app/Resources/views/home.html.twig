@@ -4,7 +4,14 @@
 {% block body %}
     <div id = "mainContainer">
         <div id ="model">
-            <img src="{{asset('images/models/model-01.jpg') }}" alt='Model 01' style='height:800px; width:auto'/>
+            <img src="{{asset('images/statics/womanJudge2.jpg') }}" alt='Model 01' style='height:800px; width:auto'/>
+        </div>
+        <div style="float:right; position:absolute; top:30%; left:55% ">
+            <h3> Welcome <h1>{{app.user.username}}!</h1></h3>
+            <br><br>
+            <h2> Get ready </h2>
+            <h2> and... </h2>
+            <a href ="{{path('level', {'id': 1})}}"> <h1 style="font-size:6vw">Go!</h1></a>
         </div>
         <div id ="modelItems">
             {# comments #}
@@ -12,7 +19,6 @@
         <div id="timer">
             
         </div>
-        <button type="button" onclick="countdown()" 
     </div>
 
     

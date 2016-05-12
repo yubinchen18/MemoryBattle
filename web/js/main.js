@@ -239,6 +239,9 @@ function postPicks()
     var badPicksObj = {items: badPicks, count: badPicks.length};    
     $('#goodPicks').attr('value', JSON.stringify(goodPicksObj));
     $('#badPicks').attr('value', JSON.stringify(badPicksObj));
+    //console.log(bonusList);
+    //console.log(JSON.stringify(bonusList));
+    $('#bonusPicks').attr('value', JSON.stringify(bonusList));
     $('#endScore').attr('value', endScore);
     $('#level').attr('value', levelId);
     $('#picks').submit();

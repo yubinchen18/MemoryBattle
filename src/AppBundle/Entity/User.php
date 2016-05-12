@@ -22,6 +22,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class User implements UserInterface, \Serializable
 {
     /**
+     * @ORM\OneToMany(targetEntity="Game", mappedBy="userId")
+     */
+    protected $games;
+    
+    /**
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -67,6 +72,7 @@ class User implements UserInterface, \Serializable
         $this->isActive = true;
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
+        $this->games = new ArrayCollection();
     }
     
     public function getUsername()

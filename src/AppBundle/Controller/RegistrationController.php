@@ -35,7 +35,7 @@ class RegistrationController extends Controller
     }
     
     /**
-     * @Route("/register", name="user_registration")
+     * @Route("/register", name="register")
      */
     public function registerAction(Request $request)
     {
@@ -60,7 +60,7 @@ class RegistrationController extends Controller
             // ... do any other work - like sending them on email, etc
             // maybe set a 'flash' success message  for the user
             
-            return $this->redirectToRoute('replace_with_some_route');
+            return $this->redirectToRoute('login');
         }
         
         return $this->render(

@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Item;
 use AppBundle\Form\ItemType;
 
@@ -13,6 +14,7 @@ use AppBundle\Form\ItemType;
  * Item controller.
  *
  * @Route("/item")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class ItemController extends Controller
 {
