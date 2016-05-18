@@ -3,18 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/src/AppBundle/Form/ModelType.php</file>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/src/AppBundle/Controller/ModelController.php</file>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/web/css/main.css</file>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/app/config/security.yml</file>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/src/AppBundle/Controller/DefaultController.php</file>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/src/AppBundle/Entity/User.php</file>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/app/config/routing.yml</file>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/web/js/main.js</file>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/app/Resources/views/play/level.html.twig</file>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/.gitignore</file>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/src/AppBundle/Form/UserType.php</file>
-            <file>file:/C:/MAMP/htdocs/MemoryBattle/src/AppBundle/Controller/RegistrationController.php</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/src/AppBundle/Entity/User.php</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/src/AppBundle/Controller/UserController.php</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/src/AppBundle/Form/UserType.php</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/app/Resources/views/user/index.html.twig</file>
+            <file>file:/Applications/MAMP/htdocs/MemoryBattle/src/AppBundle/Controller/RegistrationController.php</file>
         </group>
     </open-files>
 </project-private>

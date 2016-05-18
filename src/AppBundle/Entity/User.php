@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table(name="app_users")
@@ -100,7 +101,7 @@ class User implements UserInterface, \Serializable
     
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return array("$this->roles");
     }
     
     public function eraseCredentials()
