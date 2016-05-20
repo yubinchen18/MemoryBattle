@@ -316,7 +316,7 @@ class Game
     /**
      * @var int
      * @ORM\ManyToOne(targetEntity="User", inversedBy="games")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $userId;
 
@@ -331,6 +331,40 @@ class Game
         return $this->id;
     }
 
+    /**
+     * Set lvlGoodpicks
+     * 
+     * @param int $lvl
+     * @param string $goodpicks
+     * 
+     * @return Game
+     */
+    public function setLvlGoodpicks($lvl, $goodpicks)
+    {
+        $property = 'lvl'.$lvl.'Goodpicks';
+        if (property_exists($this, $property))
+        {
+            $this->$property = $goodpicks;
+            return $this;
+        }
+    }
+    
+    /**
+     * Get lvlGoodpicks
+     *
+     * @param int $lvl
+     * 
+     * @return string
+     */
+    public function getLvlGoodpicks($lvl)
+    {
+        $property = 'lvl'.$lvl.'Goodpicks';
+        if (property_exists($this, $property))
+        {
+            return $this->$property;
+        }    
+    }
+    
     /**
      * Set lvl1Goodpicks
      *
@@ -570,7 +604,41 @@ class Game
     {
         return $this->lvl10Goodpicks;
     }
-
+    
+    /**
+     * Set lvlBadpicks
+     * 
+     * @param int $lvl
+     * @param string $badpicks
+     * 
+     * @return Game
+     */
+    public function setLvlBadpicks($lvl, $badpicks)
+    {
+        $property = 'lvl'.$lvl.'Badpicks';
+        if (property_exists($this, $property))
+        {
+            $this->$property = $badpicks;
+            return $this;
+        }
+    }
+    
+    /**
+     * Get lvlBadpicks
+     *
+     * @param int $lvl
+     * 
+     * @return string
+     */
+    public function getLvlBadpicks($lvl)
+    {
+        $property = 'lvl'.$lvl.'Badpicks';
+        if (property_exists($this, $property))
+        {
+            return $this->$property;
+        }
+    }
+    
     /**
      * Set lvl1Badpicks
      *
@@ -812,6 +880,40 @@ class Game
     }
 
     /**
+     * Set lvlBonus
+     * 
+     * @param int $lvl
+     * @param string $bonus
+     * 
+     * @return Game
+     */
+    public function setLvlBonus($lvl, $bonus)
+    {
+        $property = 'lvl'.$lvl.'Bonus';
+        if (property_exists($this, $property))
+        {
+            $this->$property = $bonus;
+            return $this;
+        }
+    }
+    
+    /**
+     * Get lvlBonus
+     *
+     * @param int $lvl
+     * 
+     * @return string
+     */
+    public function getLvlBonus($lvl)
+    {
+        $property = 'lvl'.$lvl.'Bonus';
+        if (property_exists($this, $property))
+        {
+            return $this->$property;
+        }    
+    }
+    
+    /**
      * Set lvl1Bonus
      *
      * @param string $lvl1Bonus
@@ -1051,6 +1153,40 @@ class Game
         return $this->lvl10Bonus;
     }
 
+    /**
+     * Set lvlScore
+     * 
+     * @param int $lvl
+     * @param string $score
+     * 
+     * @return Game
+     */
+    public function setLvlScore($lvl, $score)
+    {
+        $property = 'lvl'.$lvl.'Score';
+        if (property_exists($this, $property))
+        {
+            $this->$property = $score;
+            return $this;
+        }
+    }
+    
+    /**
+     * Get lvlScore
+     *
+     * @param int $lvl
+     * 
+     * @return string
+     */
+    public function getLvlScore($lvl)
+    {
+        $property = 'lvl'.$lvl.'Score';
+        if (property_exists($this, $property))
+        {
+            return $this->$property;
+        }    
+    }
+    
     /**
      * Set lvl1Score
      *

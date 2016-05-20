@@ -29,19 +29,16 @@
                 {% endfor %}
                 <!-- 
                 <p id="viewport">asdf</p>
-                <a href ="{{ path('level', {'id': nextLevel}) }}">go</a>
-                <button id='stop'>stop</button> 
-                <p id='score'>Current score is: {{score}}</p>
-                <p>Number of fake items: {{nbOfFakeItems}}</p>
-                <p>Number of real items: {{nbOfRealItems}}</p>-->
+                <a href ="{{ path('level', {'id': nextLevel}) }}">go</a>-->
+                <br><br>
                 <button id='submitPicks'><span>Submit</span></button> 
-                <p id='score'>Current score is: {{score}}</p>
+                <p id='score'>Current score: {{game.finalScore}}</p>
             </div>
         </div>
                 
         <div id="controlePanel">
             <button id='button1-hide'>Hide</button>
-            <button id="hide">Hide</button>
+            <button id="hide">Hide</button>https://kat.cr/blog/Uterkof/post/salvador-dal%C3%AD-nace-el-11-de-mayo-de-1904/
             <button id="show">Show</button>
             
             <h2>Total Items: {{model.totalItems}}</h2>

@@ -260,7 +260,7 @@ function screenTimerCountdown (seconds)
         {
             clearInterval(timerBar);
             //redirect to next level
-            listScores();
+            //listScores();
             //postPicks();
         } else {
             $(elId).animate({
@@ -443,7 +443,7 @@ $(function(){
     //timer appear
     $('#timer').css('right', '-800px').
         animate({
-            right: '29%'
+            right: '25%'
         }, 1000, 'easeOutQuart');
         
     //countdown timer, modelPanel disappear, modelItems appear

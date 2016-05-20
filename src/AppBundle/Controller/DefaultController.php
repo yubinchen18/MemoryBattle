@@ -22,7 +22,6 @@ class DefaultController extends Controller
         // Access for users only
         $this->denyAccessUnlessGranted('ROLE_USER', null, "Please login first!");
         // replace this example code with whatever you need
-        //return $this->render('default/index.html.twig', [
         $manager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository("AppBundle:Item");
         $products = $repository->findAll();
@@ -44,16 +43,25 @@ class DefaultController extends Controller
         
         $session = $request->getSession();
         $user = $this->getUser();
-        $score = $session->get('score');
         
         //persist per level
         $em = $this->getDoctrine()->getManager();
         $game = $em->getRepository('AppBundle:Game')->find($session->get('gameId'));
-        $game->setLvl10Goodpicks($request->request->get('goodPicks'));
-        $game->setLvl10Badpicks($request->request->get('badPicks'));
-        $game->setLvl10Bonus($request->request->get('bonus'));
-        $game->setLvl10Score($request->request->get('score'));
-        $game->setFinalScore($score);
+        
+        $lvl = $request->request->get('level');
+        $game->setLvlGoodpicks($lvl, $request->request->get('goodPicks'));
+        $game->setLvlBadpicks($lvl, $request->request->get('badPicks'));
+        $game->setLvlBonus($lvl, $request->request->get('bonus'));
+        $game->setLvlScore($lvl, $request->request->get('score'));
+        
+        // update final score
+        $finalScore = 0;
+        for ($i = 1; $i <= 10; $i++)
+        {
+            $finalScore += $game->getLvlScore($i);   
+        }
+        $game->setFinalScore($finalScore);
+        
         $em->flush();
         
         /*
@@ -73,13 +81,8 @@ class DefaultController extends Controller
         $items = $query->getResult();
         
         return $this->render('play/final.html.twig', array(
-            //'items' => $items,
-            //'model' => $model,
-            //'screenTimer' => $screenTimer,
-            //'nextLevel' => $nextLevel,
-            'score' => $score,
-            'items' => $items,
-            //'levelId' => $id
+            'game' => $game,
+            'items' => $items
         ));
     }
     
@@ -115,107 +118,39 @@ class DefaultController extends Controller
         $session = $request->getSession();
         $user = $this->getUser();
         
-        
-        //var_dump($goodPicks);
-        //var_dump($_SESSION);
         //ini session bag, at level 1 set score to 0
         if($id==1)
-        {
-            
+        {            
             $game = new Game();
             $game->setUserId($user);
             $game->setCreated(new \DateTime);
-            
+            $game->setFinalScore(0);
+                       
             $em = $this->getDoctrine()->getManager();
             $em->persist($game);
             $em->flush();
             
-            $session->set('score', 0);
             $session->set('gameId', $game->getId());
-        } else {
-            
-            /* *
-             * Score system
-             * each good pick + 1
-             * each bad pick - 1
-             * if only good picks get bonus double score
-             * if only good picks and press submit bonus 
-             */
-            
-            
-            //if ($request->request->has('goodPicks') && $request->request->has('badPicks'))
-            
-            $newScore = $session->get('score') + ($request->request->get('score'));
-            $session->set('score', $newScore);
-            
+        } else {            
             //persist per level
             $em = $this->getDoctrine()->getManager();
             $game = $em->getRepository('AppBundle:Game')->find($session->get('gameId'));
             
-            switch ($request->request->get('level'))
+            $lvl = $request->request->get('level');
+            $game->setLvlGoodpicks($lvl, $request->request->get('goodPicks'));
+            $game->setLvlBadpicks($lvl, $request->request->get('badPicks'));
+            $game->setLvlBonus($lvl, $request->request->get('bonus'));
+            $game->setLvlScore($lvl, $request->request->get('score'));
+            
+            // update final score
+            $finalScore = 0;
+            for ($i = 1; $i <= 10; $i++)
             {
-                case 1:
-                    $game->setLvl1Goodpicks($request->request->get('goodPicks'));
-                    $game->setLvl1Badpicks($request->request->get('badPicks'));
-                    $game->setLvl1Bonus($request->request->get('bonus'));
-                    $game->setLvl1Score($request->request->get('score'));
-                    break;
-                case 2:
-                    $game->setLvl2Goodpicks($request->request->get('goodPicks'));
-                    $game->setLvl2Badpicks($request->request->get('badPicks'));
-                    $game->setLvl2Bonus($request->request->get('bonus'));
-                    $game->setLvl2Score($request->request->get('score'));
-                    break;
-                case 3:
-                    $game->setLvl3Goodpicks($request->request->get('goodPicks'));
-                    $game->setLvl3Badpicks($request->request->get('badPicks'));
-                    $game->setLvl3Bonus($request->request->get('bonus'));
-                    $game->setLvl3Score($request->request->get('score'));
-                    break;
-                case 4:
-                    $game->setLvl4Goodpicks($request->request->get('goodPicks'));
-                    $game->setLvl4Badpicks($request->request->get('badPicks'));
-                    $game->setLvl4Bonus($request->request->get('bonus'));
-                    $game->setLvl4Score($request->request->get('score'));
-                    break;
-                case 5:
-                    $game->setLvl5Goodpicks($request->request->get('goodPicks'));
-                    $game->setLvl5Badpicks($request->request->get('badPicks'));
-                    $game->setLvl5Bonus($request->request->get('bonus'));
-                    $game->setLvl5Score($request->request->get('score'));
-                    break;
-                case 6:
-                    $game->setLvl6Goodpicks($request->request->get('goodPicks'));
-                    $game->setLvl6Badpicks($request->request->get('badPicks'));
-                    $game->setLvl6Bonus($request->request->get('bonus'));
-                    $game->setLvl6Score($request->request->get('score'));
-                    break;
-                case 7:
-                    $game->setLvl7Goodpicks($request->request->get('goodPicks'));
-                    $game->setLvl7Badpicks($request->request->get('badPicks'));
-                    $game->setLvl7Bonus($request->request->get('bonus'));
-                    $game->setLvl7Score($request->request->get('score'));
-                    break;
-                case 8:
-                    $game->setLvl8Goodpicks($request->request->get('goodPicks'));
-                    $game->setLvl8Badpicks($request->request->get('badPicks'));
-                    $game->setLvl8Bonus($request->request->get('bonus'));
-                    $game->setLvl8Score($request->request->get('score'));
-                    break;
-                case 9:
-                    $game->setLvl9Goodpicks($request->request->get('goodPicks'));
-                    $game->setLvl9Badpicks($request->request->get('badPicks'));
-                    $game->setLvl9Bonus($request->request->get('bonus'));
-                    $game->setLvl9Score($request->request->get('score'));
-                    break;
-                case 10:
-                    $game->setLvl10Goodpicks($request->request->get('goodPicks'));
-                    $game->setLvl10Badpicks($request->request->get('badPicks'));
-                    $game->setLvl10Bonus($request->request->get('bonus'));
-                    $game->setLvl10Score($request->request->get('score'));
-                    break;
+                $finalScore += $game->getLvlScore($i);   
             }
-
+            $game->setFinalScore($finalScore);
+            
+            // save game data
             $em->flush();
             
         }
@@ -230,14 +165,13 @@ class DefaultController extends Controller
         } else {
             $nextLevel = $id+1;
         }
-        $score = $session->get('score');
         
         return $this->render('play/level.html.twig', array(
             'items' => $items,
             'model' => $model,
             'screenTimer' => $screenTimer,
             'nextLevel' => $nextLevel,
-            'score' => $score,
+            'game' => $game,
             'levelId' => $id
         ));
     }

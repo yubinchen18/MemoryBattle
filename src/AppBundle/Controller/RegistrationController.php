@@ -58,7 +58,7 @@ class RegistrationController extends Controller
                     ->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
             // Hard code user role ass 'ROLE_USER' on default
-            $user->setRoles('ROLE_USER');
+            $user->setRole('ROLE_USER');
             
             // 4) save the User!
             $em = $this->getDoctrine()->getManager();
