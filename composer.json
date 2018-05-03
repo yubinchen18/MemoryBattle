@@ -18,7 +18,7 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "symfony/symfony": "3.0.*",
+        "symfony/symfony": "3.4.*",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
@@ -58,7 +58,7 @@
         }
     },
     "extra": {
-        "symfony-app-dir": "app",
+        "symfony-app-dir": "bin",
         "symfony-bin-dir": "bin",
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
